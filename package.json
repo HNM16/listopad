@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@chakra-ui/react": "^3.28.0",
     "@emotion/is-prop-valid": "latest",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",

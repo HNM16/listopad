@@ -53,13 +53,13 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon" onClick={toggleTheme} className="h-9 w-9">
-            {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+            {theme === "light" ? <Moon className="h-6 w-6" /> : <Sun className="h-6 w-6" />}
           </Button>
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="h-9 w-9">
-                <Globe className="h-4 w-4" />
+                <Globe className="h-6 w-6" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">

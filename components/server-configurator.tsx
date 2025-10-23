@@ -15,12 +15,16 @@ interface ServerConfig {
   traffic: number
 }
 
+// курс рубля к сомони
+const RUB_TO_SOM = 0.14
+
 const calculateMonthlyPrice = (config: ServerConfig): number => {
   const cpuPrice = config.cpu * 150
   const ramPrice = config.ram * 50
   const ssdPrice = (config.ssd / 10) * 20
   const trafficPrice = config.traffic * 100
-  return cpuPrice + ramPrice + ssdPrice + trafficPrice
+  const totalRub = cpuPrice + ramPrice + ssdPrice + trafficPrice
+  return totalRub * RUB_TO_SOM
 }
 
 const calculateDailyPrice = (monthlyPrice: number): number => {
@@ -354,47 +358,27 @@ export function ServerConfigurator() {
 
                   <div className="space-y-4">
                     <div className={`flex items-center justify-between border-b ${borderClass} pb-3`}>
-                      <span className={mutedTextClass}>
-                        {t.nav.about === "О компании"
-                          ? "Процессор:"
-                          : t.nav.about === "About"
-                            ? "Processor:"
-                            : "Процессор:"}
-                      </span>
+                      <span className={mutedTextClass}>Процессор:</span>
                       <span className={`text-xl font-bold ${textClass}`}>{config.cpu} vCPU</span>
                     </div>
                     <div className={`flex items-center justify-between border-b ${borderClass} pb-3`}>
-                      <span className={mutedTextClass}>
-                        {t.nav.about === "О компании" ? "Память:" : t.nav.about === "About" ? "Memory:" : "Хотира:"}
-                      </span>
+                      <span className={mutedTextClass}>Память:</span>
                       <span className={`text-xl font-bold ${textClass}`}>{config.ram} GB</span>
                     </div>
                     <div className={`flex items-center justify-between border-b ${borderClass} pb-3`}>
-                      <span className={mutedTextClass}>
-                        {t.nav.about === "О компании" ? "Диск:" : t.nav.about === "About" ? "Disk:" : "Диск:"}
-                      </span>
+                      <span className={mutedTextClass}>Диск:</span>
                       <span className={`text-xl font-bold ${textClass}`}>{config.ssd} GB SSD</span>
                     </div>
                     <div className={`flex items-center justify-between border-b ${borderClass} pb-3`}>
-                      <span className={mutedTextClass}>
-                        {t.nav.about === "О компании" ? "Трафик:" : t.nav.about === "About" ? "Traffic:" : "Трафик:"}
-                      </span>
+                      <span className={mutedTextClass}>Трафик:</span>
                       <span className={`text-xl font-bold ${textClass}`}>{config.traffic} TB</span>
                     </div>
                   </div>
 
                   <div className="space-y-3 pt-4">
-                    <h4 className={`text-lg font-semibold ${textClass}`}>
-                      {t.nav.about === "О компании" ? "Стоимость" : t.nav.about === "About" ? "Cost" : "Арзиш"}
-                    </h4>
+                    <h4 className={`text-lg font-semibold ${textClass}`}>Стоимость</h4>
                     <div className="flex items-center justify-between">
-                      <span className={mutedTextClass}>
-                        {t.nav.about === "О компании"
-                          ? "Ежемесячная плата:"
-                          : t.nav.about === "About"
-                            ? "Monthly payment:"
-                            : "Пардохти ҳармоҳа:"}
-                      </span>
+                      <span className={mutedTextClass}>Ежемесячная плата:</span>
                       <AnimatePresence mode="wait">
                         <motion.span
                           key={monthlyPrice}
@@ -403,18 +387,12 @@ export function ServerConfigurator() {
                           exit={{ opacity: 0, scale: 0.8 }}
                           className={`text-xl font-bold ${textClass}`}
                         >
-                          {monthlyPrice.toFixed(0)} ₽
+                          {monthlyPrice.toFixed(0)} TJS
                         </motion.span>
                       </AnimatePresence>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className={mutedTextClass}>
-                        {t.nav.about === "О компании"
-                          ? "Ежедневная плата:"
-                          : t.nav.about === "About"
-                            ? "Daily payment:"
-                            : "Пардохти ҳаррӯза:"}
-                      </span>
+                      <span className={mutedTextClass}>Ежедневная плата:</span>
                       <AnimatePresence mode="wait">
                         <motion.span
                           key={dailyPrice}
@@ -423,18 +401,12 @@ export function ServerConfigurator() {
                           exit={{ opacity: 0, scale: 0.8 }}
                           className={`text-xl font-bold ${textClass}`}
                         >
-                          {dailyPrice.toFixed(0)} ₽
+                          {dailyPrice.toFixed(0)} TJS
                         </motion.span>
                       </AnimatePresence>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className={mutedTextClass}>
-                        {t.nav.about === "О компании"
-                          ? "Плата за установку:"
-                          : t.nav.about === "About"
-                            ? "Setup fee:"
-                            : "Пардохт барои насб:"}
-                      </span>
+                      <span className={mutedTextClass}>Плата за установку:</span>
                       <AnimatePresence mode="wait">
                         <motion.span
                           key={setupFee}
@@ -443,14 +415,12 @@ export function ServerConfigurator() {
                           exit={{ opacity: 0, scale: 0.8 }}
                           className={`text-xl font-bold ${textClass}`}
                         >
-                          {setupFee.toFixed(0)} ₽
+                          {setupFee.toFixed(0)} TJS
                         </motion.span>
                       </AnimatePresence>
                     </div>
                     <div className={`flex items-center justify-between border-t ${borderClass} pt-3`}>
-                      <span className={`text-lg font-semibold ${textClass}`}>
-                        {t.nav.about === "О компании" ? "Итого:" : t.nav.about === "About" ? "Total:" : "Ҷамъ:"}
-                      </span>
+                      <span className={`text-lg font-semibold ${textClass}`}>Итого:</span>
                       <AnimatePresence mode="wait">
                         <motion.span
                           key={totalPrice}
@@ -459,7 +429,7 @@ export function ServerConfigurator() {
                           exit={{ opacity: 0, scale: 0.8 }}
                           className="text-3xl font-bold text-cyan-500"
                         >
-                          {totalPrice.toFixed(0)} ₽
+                          {totalPrice.toFixed(0)} TJS
                         </motion.span>
                       </AnimatePresence>
                     </div>
@@ -470,11 +440,7 @@ export function ServerConfigurator() {
                   size="lg"
                   className="mt-6 w-full bg-gradient-to-r from-cyan-400 to-teal-400 text-lg font-semibold text-slate-900 hover:from-cyan-500 hover:to-teal-500"
                 >
-                  {t.nav.about === "О компании"
-                    ? "Заказать сервер"
-                    : t.nav.about === "About"
-                      ? "Order server"
-                      : "Фармоиш додани сервер"}
+                  Заказать сервер
                 </Button>
               </div>
             </div>
