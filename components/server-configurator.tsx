@@ -500,7 +500,7 @@ export function ServerConfigurator() {
 
   <Button
     size="lg"
-    className="mt-6 w-full bg-gradient-to-r from-cyan-400 to-teal-400 text-lg font-semibold text-slate-900 hover:from-cyan-500 hover:to-teal-500"
+    className="mt-6 w-full bg-gradient-to-r from-cyan-400 to-teal-400 text-lg font-semibold text-slate-900 dark:text-white hover:from-cyan-500 hover:to-teal-500"
   >
     {t.nav.about === "О компании"
       ? "Заказать сервер"
