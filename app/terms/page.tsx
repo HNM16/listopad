@@ -156,7 +156,7 @@ export default function TermsPage() {
                 </div>
               </div>
               <h1 className="text-balance text-center text-5xl font-bold">{pageContent.title}</h1>
-              <p className="mt-4 text-center text-sm text-muted-foreground">{pageContent.lastUpdated}</p>
+              <p className="mt-4 text-center  text-sm text-muted-foreground">{pageContent.lastUpdated}</p>
             </motion.div>
           </div>
         </section>

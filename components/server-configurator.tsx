@@ -110,7 +110,7 @@ export function ServerConfigurator() {
                           ? "Процессор (vCPU):"
                           : t.nav.about === "About"
                             ? "Processor (vCPU):"
-                            : "Процессор (vCPU):"}
+                            : "Kоркардкунанда (vCPU):"}
                       </span>
                     </div>
                     <AnimatePresence mode="wait">
@@ -346,103 +346,170 @@ export function ServerConfigurator() {
               </div>
 
               {/* Right Panel - Summary */}
-              <div className={`flex flex-col justify-between rounded-xl ${panelBgClass} p-6 backdrop-blur-sm`}>
-                <div className="space-y-6">
-                  <h3 className={`text-2xl font-bold ${textClass}`}>
-                    {t.nav.about === "О компании"
-                      ? "Ваша конфигурация"
-                      : t.nav.about === "About"
-                        ? "Your configuration"
-                        : "Конфигуратсияи шумо"}
-                  </h3>
+            {/* Right Panel - Summary */}
+<div className={`flex flex-col justify-between rounded-xl ${panelBgClass} p-6 backdrop-blur-sm`}>
+  <div className="space-y-6">
+    <h3 className={`text-2xl font-bold ${textClass}`}>
+      {t.nav.about === "О компании"
+        ? "Ваша конфигурация"
+        : t.nav.about === "About"
+        ? "Your configuration"
+        : "Конфигуратсияи шумо"}
+    </h3>
 
-                  <div className="space-y-4">
-                    <div className={`flex items-center justify-between border-b ${borderClass} pb-3`}>
-                      <span className={mutedTextClass}>Процессор:</span>
-                      <span className={`text-xl font-bold ${textClass}`}>{config.cpu} vCPU</span>
-                    </div>
-                    <div className={`flex items-center justify-between border-b ${borderClass} pb-3`}>
-                      <span className={mutedTextClass}>Память:</span>
-                      <span className={`text-xl font-bold ${textClass}`}>{config.ram} GB</span>
-                    </div>
-                    <div className={`flex items-center justify-between border-b ${borderClass} pb-3`}>
-                      <span className={mutedTextClass}>Диск:</span>
-                      <span className={`text-xl font-bold ${textClass}`}>{config.ssd} GB SSD</span>
-                    </div>
-                    <div className={`flex items-center justify-between border-b ${borderClass} pb-3`}>
-                      <span className={mutedTextClass}>Трафик:</span>
-                      <span className={`text-xl font-bold ${textClass}`}>{config.traffic} TB</span>
-                    </div>
-                  </div>
+    <div className="space-y-4">
+      <div className={`flex items-center justify-between border-b ${borderClass} pb-3`}>
+        <span className={mutedTextClass}>
+          {t.nav.about === "О компании"
+            ? "Процессор:"
+            : t.nav.about === "About"
+            ? "Processor:"
+            : "Коркардкунанда:"}
+        </span>
+        <span className={`text-xl font-bold ${textClass}`}>{config.cpu} vCPU</span>
+      </div>
 
-                  <div className="space-y-3 pt-4">
-                    <h4 className={`text-lg font-semibold ${textClass}`}>Стоимость</h4>
-                    <div className="flex items-center justify-between">
-                      <span className={mutedTextClass}>Ежемесячная плата:</span>
-                      <AnimatePresence mode="wait">
-                        <motion.span
-                          key={monthlyPrice}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.8 }}
-                          className={`text-xl font-bold ${textClass}`}
-                        >
-                          {monthlyPrice.toFixed(0)} TJS
-                        </motion.span>
-                      </AnimatePresence>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className={mutedTextClass}>Ежедневная плата:</span>
-                      <AnimatePresence mode="wait">
-                        <motion.span
-                          key={dailyPrice}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.8 }}
-                          className={`text-xl font-bold ${textClass}`}
-                        >
-                          {dailyPrice.toFixed(0)} TJS
-                        </motion.span>
-                      </AnimatePresence>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className={mutedTextClass}>Плата за установку:</span>
-                      <AnimatePresence mode="wait">
-                        <motion.span
-                          key={setupFee}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.8 }}
-                          className={`text-xl font-bold ${textClass}`}
-                        >
-                          {setupFee.toFixed(0)} TJS
-                        </motion.span>
-                      </AnimatePresence>
-                    </div>
-                    <div className={`flex items-center justify-between border-t ${borderClass} pt-3`}>
-                      <span className={`text-lg font-semibold ${textClass}`}>Итого:</span>
-                      <AnimatePresence mode="wait">
-                        <motion.span
-                          key={totalPrice}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.8 }}
-                          className="text-3xl font-bold text-cyan-500"
-                        >
-                          {totalPrice.toFixed(0)} TJS
-                        </motion.span>
-                      </AnimatePresence>
-                    </div>
-                  </div>
-                </div>
+      <div className={`flex items-center justify-between border-b ${borderClass} pb-3`}>
+        <span className={mutedTextClass}>
+          {t.nav.about === "О компании"
+            ? "Память:"
+            : t.nav.about === "About"
+            ? "Memory:"
+            : "Хотира:"}
+        </span>
+        <span className={`text-xl font-bold ${textClass}`}>{config.ram} GB</span>
+      </div>
 
-                <Button
-                  size="lg"
-                  className="mt-6 w-full bg-gradient-to-r from-cyan-400 to-teal-400 text-lg font-semibold text-slate-900 hover:from-cyan-500 hover:to-teal-500"
-                >
-                  Заказать сервер
-                </Button>
-              </div>
+      <div className={`flex items-center justify-between border-b ${borderClass} pb-3`}>
+        <span className={mutedTextClass}>
+          {t.nav.about === "О компании"
+            ? "Диск:"
+            : t.nav.about === "About"
+            ? "Disk:"
+            : "Диск:"}
+        </span>
+        <span className={`text-xl font-bold ${textClass}`}>{config.ssd} GB SSD</span>
+      </div>
+
+      <div className={`flex items-center justify-between border-b ${borderClass} pb-3`}>
+        <span className={mutedTextClass}>
+          {t.nav.about === "О компании"
+            ? "Трафик:"
+            : t.nav.about === "About"
+            ? "Traffic:"
+            : "Трафик:"}
+        </span>
+        <span className={`text-xl font-bold ${textClass}`}>{config.traffic} TB</span>
+      </div>
+    </div>
+
+    <div className="space-y-3 pt-4">
+      <h4 className={`text-lg font-semibold ${textClass}`}>
+        {t.nav.about === "О компании"
+          ? "Стоимость"
+          : t.nav.about === "About"
+          ? "Cost"
+          : "Арзиш"}
+      </h4>
+
+      <div className="flex items-center justify-between">
+        <span className={mutedTextClass}>
+          {t.nav.about === "О компании"
+            ? "Ежемесячная плата:"
+            : t.nav.about === "About"
+            ? "Monthly fee:"
+            : "Пардохти моҳона:"}
+        </span>
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={monthlyPrice}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className={`text-xl font-bold ${textClass}`}
+          >
+            {monthlyPrice.toFixed(0)} TJS
+          </motion.span>
+        </AnimatePresence>
+      </div>
+
+      <div className="flex items-center justify-between">
+        <span className={mutedTextClass}>
+          {t.nav.about === "О компании"
+            ? "Ежедневная плата:"
+            : t.nav.about === "About"
+            ? "Daily fee:"
+            : "Пардохти рӯзона:"}
+        </span>
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={dailyPrice}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className={`text-xl font-bold ${textClass}`}
+          >
+            {dailyPrice.toFixed(0)} TJS
+          </motion.span>
+        </AnimatePresence>
+      </div>
+
+      <div className="flex items-center justify-between">
+        <span className={mutedTextClass}>
+          {t.nav.about === "О компании"
+            ? "Плата за установку:"
+            : t.nav.about === "About"
+            ? "Setup fee:"
+            : "Пардохт барои насб:"}
+        </span>
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={setupFee}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className={`text-xl font-bold ${textClass}`}
+          >
+            {setupFee.toFixed(0)} TJS
+          </motion.span>
+        </AnimatePresence>
+      </div>
+
+      <div className={`flex items-center justify-between border-t ${borderClass} pt-3`}>
+        <span className={`text-lg font-semibold ${textClass}`}>
+          {t.nav.about === "О компании"
+            ? "Итого:"
+            : t.nav.about === "About"
+            ? "Total:"
+            : "Ҳамагӣ:"}
+        </span>
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={totalPrice}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="text-3xl font-bold text-cyan-500"
+          >
+            {totalPrice.toFixed(0)} TJS
+          </motion.span>
+        </AnimatePresence>
+      </div>
+    </div>
+  </div>
+
+  <Button
+    size="lg"
+    className="mt-6 w-full bg-gradient-to-r from-cyan-400 to-teal-400 text-lg font-semibold text-slate-900 hover:from-cyan-500 hover:to-teal-500"
+  >
+    {t.nav.about === "О компании"
+      ? "Заказать сервер"
+      : t.nav.about === "About"
+      ? "Order server"
+      : "Фармоиш додани сервер"}
+  </Button>
+</div>
+
             </div>
           </div>
         </div>
