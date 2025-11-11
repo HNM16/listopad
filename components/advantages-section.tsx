@@ -3,7 +3,7 @@
 import { useLanguage } from "@/hooks/use-language"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { motion, useInView } from "framer-motion"
-import { Shield, Zap, Layout } from "lucide-react"
+import { Shield, Zap, Layout, Dice1 } from "lucide-react"
 import { useRef } from "react"
 
 export function AdvantagesSection() {
