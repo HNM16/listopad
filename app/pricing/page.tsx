@@ -2,7 +2,7 @@
 
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { ServerConfigurator } from "@/components/server-configurator"
+import ServerConfigurator  from "@/components/server-configurator"
 import { useLanguage } from "@/hooks/use-language"
 import { motion } from "framer-motion"
 import { Check } from "lucide-react"
